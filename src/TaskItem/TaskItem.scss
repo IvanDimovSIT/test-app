@@ -1,0 +1,53 @@
+
+$border-radius: 8px;
+
+$primary-color: #3498db;
+$hover-color: #2980b9;
+$base-color: #f5f5f5;
+$border-radius: 10px;
+$font-family: 'Helvetica', sans-serif;
+$text-color-odd: #161616;
+$text-color-even: #494949;
+$border-margin: 5px;
+
+.TaskItemContainer {
+  list-style: none;
+  padding: $border-margin;
+  margin: $border-margin;
+  background-color: $base-color;
+  border-radius: $border-radius;
+  font-family: $font-family;
+  
+  width: calc(95vw - #{$border-margin * 2});
+  box-sizing: border-box;
+}
+
+.TaskItemContainer li {
+  margin-bottom: $border-margin;
+}
+
+.TaskItemContainer li:nth-child(odd) {
+  color: $text-color-odd;
+}
+
+.TaskItemContainer li:nth-child(even) {
+  color: $text-color-even;
+}
+
+.TaskItemViewButton,
+.TaskItemCompleteButton{
+    width: auto; 
+    padding: 8px;
+    margin-right: 10px; 
+    border: none;
+    border-radius: $border-radius;
+    background-color: $primary-color;
+    color: #fff;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: $hover-color;
+    }
+}
+
+
