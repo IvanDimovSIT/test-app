@@ -1,52 +1,59 @@
-import { Task } from "../model/Task";
+let tasks = [];
+let idCounter = 1;
 
-class TaskDatasource{
-    constructor(){
-        this.tasks = [/*new Task(0, "Test", 2, false, "")*/];
-        this.idCounter = 1;
-    }
-
-    addTask(addTaskDTO){
-        this.tasks.push(new Task(this.idCounter++, addTaskDTO.name, addTaskDTO.time, false, ""));
-        
-        console.log("task added:", this.tasks.at(this.tasks.length-1));
-    }
-
-    complete(task){
-        this.tasks.forEach(i => {
-            if(i.id === task.id){
-                i.isCompleted = true;
-            }
-        });
-    }
-
-    updateDescription(id, description){
-        let updatedCount = 0;
-        for (const task of this.tasks) {
-            if (task.id === id) {
-              task.description = description;
-              updatedCount++;
-            }
+const addTask = (task) => {
+    tasks.push(
+        { 
+            id: idCounter++,
+            name: task.name,
+            time: task.time,
+            isCompleted: false,
+            description: "" 
         }
-        console.log("Updated rows:", updatedCount);
-    }
+    );
 
-    findById(id){
-        for (const task of this.tasks) {
-            if (task.id === id) {
-              return task;
-            }
+    console.log("TaskDatasource: task added:", tasks.at(tasks.length-1));
+};
+
+const complete = (task) => {
+    tasks.forEach(i => {
+        if(i.id === task.id){
+            i.isCompleted = true;
         }
+    });
+};
 
-        return null;
+const updateDescription = (id, description) => {
+    let updatedCount = 0;
+    for (const task of tasks) {
+        if (task.id === id) {
+          task.description = description;
+          updatedCount++;
+        }
     }
-
-    getTasks(){
-        return this.tasks;
-    }
-
+    console.log("TaskDatasource: Updated rows:", updatedCount);
 }
 
+const findById = (id) => {
+    for (const task of tasks) {
+        if (task.id === id) {
+          return task;
+        }
+    }
 
-export const taskDatasource = new TaskDatasource();
+    return null;
+};
 
+const getTasks = () => {
+    return tasks;
+};
+
+const exportedFunctions = {
+    addTask,
+    complete,
+    updateDescription,
+    findById,
+    getTasks
+};
+
+export default exportedFunctions;

@@ -1,5 +1,9 @@
-import "./Page404"
+import Text404 from "../../Text404/Text404";
+import "./Page404.scss"
 
-export default function Page404(){
-    return <h1>Error 404</h1>
-}
+
+const Page404 = () => {
+    return <Text404 />;
+};
+
+export default Page404;

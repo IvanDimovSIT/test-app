@@ -2,13 +2,14 @@ import { useParams } from 'react-router-dom';
 import { useHistory, useNavigate } from 'react-router-dom';
 
 import "./ViewTaskPage.scss"
-import { taskDatasource } from '../../datasource/TaskDatasource';
 import React, { useState } from 'react';
+import exportedFunctions from '../../datasource/TaskDatasource';
 
 
-export default function ViewTaskPage() {
+
+const ViewTaskPage = () => {
     const { taskId } = useParams();
-    const task = taskDatasource.findById(parseInt(taskId));
+    const task = exportedFunctions.findById(parseInt(taskId));
 
     const navigate = useNavigate();
 
@@ -19,7 +20,7 @@ export default function ViewTaskPage() {
     };
 
     const onBackPressed = () => {
-        taskDatasource.updateDescription(task.id, description);
+        exportedFunctions.updateDescription(task.id, description);
         navigate("/");
     };
 
@@ -43,4 +44,6 @@ export default function ViewTaskPage() {
             </p>
         </div>
     );
-}
+};
+
+export default ViewTaskPage;

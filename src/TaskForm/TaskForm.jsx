@@ -1,8 +1,7 @@
-import { AddTaskDTO } from "../dtos/AddTaskDTO";
 import "./TaskForm.scss"
 import React, { useState } from 'react';
 
-function validateForm(taskname, time){
+const validateForm = (taskname, time) => {
     if(!taskname || taskname.trim() === ""){
         return "Enter task name";
     }else if(!time || time.trim() === ""){
@@ -15,9 +14,9 @@ function validateForm(taskname, time){
     }else{
         return null;
     }
-}
+};
 
-export default function TaskForm({onTaskAdded}){
+const TaskForm = ({onTaskAdded}) => {
     const [inputs, setInputs] = useState({});
     const [error, setError] = useState(null);
 
@@ -38,7 +37,7 @@ export default function TaskForm({onTaskAdded}){
         setError(validationResult);
 
         if(validationResult === null){
-            onTaskAdded(new AddTaskDTO(inputs.taskname, inputs.time));
+            onTaskAdded({name: inputs.taskname, time: inputs.time});
             clearInputs();
         }
     };
@@ -68,3 +67,5 @@ export default function TaskForm({onTaskAdded}){
         </form>
     );
 }
+
+export default TaskForm;

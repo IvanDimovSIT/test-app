@@ -1,22 +1,24 @@
 import "./TasksPage.scss"
 import TaskList from "../../TaskList/TaskList"
-import { taskDatasource } from "../../datasource/TaskDatasource";
 import TaskForm from "../../TaskForm/TaskForm";
 import React, { useState } from 'react';
+import exportedFunctions from "../../datasource/TaskDatasource";
 
 
-export default function TaskPage(){
-    const [tasks, setTasks] = useState(taskDatasource.getTasks());
+const TaskPage = () => {
+    const [tasks, setTasks] = useState(exportedFunctions.getTasks());
 
-    const taskAddedListener = (taskDTO) => {
-        taskDatasource.addTask(taskDTO);
-        setTasks([...taskDatasource.getTasks()]); // <------- !!!!
+    const taskAddedListener = (task) => {
+        
+        exportedFunctions.addTask(task);
+        setTasks([...exportedFunctions.getTasks()]); // <------- !!!!
     };
 
     const taskCompletedListener = (task) =>{
-        console.log("task completed:", task);
-        taskDatasource.complete(task);
-        setTasks([...taskDatasource.getTasks()]); // <------- !!!!
+        console.log("TaskPage: task completed:", task);
+        exportedFunctions.complete(task);
+        setTasks([...exportedFunctions.getTasks()]); // <------- !!!!
+        
     };
 
     return ( 
@@ -25,5 +27,6 @@ export default function TaskPage(){
         <TaskList tasks={tasks} onCompleted={taskCompletedListener}/>
     </div>
     );
-}
+};
 
+export default TaskPage;

@@ -4,7 +4,7 @@ import React from 'react';
 
 import "./TaskItem.scss"
 
-export default function TaskItem({task, onCompleted}){
+const TaskItem = ({task, onCompleted}) => {
     const navigate = useNavigate();
 
     const handleViewClick = () => {
@@ -29,5 +29,6 @@ export default function TaskItem({task, onCompleted}){
             </li>
         </ul>
     );
-}
+};
 
+export default TaskItem;
