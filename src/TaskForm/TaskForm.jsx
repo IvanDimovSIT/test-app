@@ -16,7 +16,7 @@ const validateForm = (taskname, time) => {
     }
 };
 
-const TaskForm = ({onTaskAdded}) => {
+const TaskForm = ({onTaskAdded, onDeleteTasks}) => {
     const [inputs, setInputs] = useState({});
     const [error, setError] = useState(null);
 
@@ -62,9 +62,13 @@ const TaskForm = ({onTaskAdded}) => {
                     onChange={handleChange}
                 />
             </label>
-            <input className="TaskFormAddButton" value={"Add"} type="submit"/>
+            <div>
+                <input className="TaskFormAddButton" value={"Add"} type="submit"/>
+                <input className="TaskFormDeleteButton" value={"Delete"} type="button" onClick={onDeleteTasks}/>
+            </div>
             <label className="TaskFormErrorText">{error || ""}</label>
         </form>
+
     );
 }
 

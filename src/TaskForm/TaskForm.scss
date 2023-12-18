@@ -50,12 +50,11 @@ input[type='number'] {
   
 
   
-
-
-
+.TaskFormDeleteButton,
 .TaskFormAddButton {
   width: auto; 
-  padding: 8px; 
+  padding: 8px;
+  margin-right: 10px; 
   border: none;
   border-radius: $border-radius;
   background-color: $primary-color;
