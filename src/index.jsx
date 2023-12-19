@@ -12,6 +12,7 @@ export default function App(){
       <Routes>
         <Route path="/" element={<TaskPage />} />
         <Route path="view/:taskId" element={<ViewTaskPage/>}/>
+        <Route path="404" element={<Page404 />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
     </Router>

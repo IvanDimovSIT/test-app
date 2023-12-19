@@ -16,7 +16,8 @@ const TaskPage = () => {
                 console.error('Error fetching tasks:', error.message);
             }
         };
-        fetchData();}, []);
+        fetchData();}, []
+    );
 
     const deleteTasks = async () => {
         console.log("deleteing completed tasks");
